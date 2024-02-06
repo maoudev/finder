@@ -1,0 +1,23 @@
+---
+import Gallery from "../components/Gallery.astro";
+import Input from "../components/Input.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="asdas" , description="asdñams">
+  <main class="flex flex-col justify-center items-center text-center">
+    <h2 id="title" class="text-white text-4xl mt-4 font-medium">Finder</h2>
+    <Input url="#" />
+    <Gallery />
+  </main>
+</Layout>
+
+<style>
+  @font-face {
+    font-family: "medio";
+    src: url("/fonts/medio.woff2");
+  }
+  #title {
+    font-family: "medio";
+  }
+</style>

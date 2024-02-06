@@ -1,0 +1,149 @@
+---
+import "photoswipe/style.css";
+
+const GALLERY_IMAGES = [
+  {
+    path: "/gallery/img-1.webp",
+    width: "600",
+    height: "1062",
+  },
+  {
+    path: "/gallery/img-2.webp",
+    width: "828",
+    height: "1472",
+  },
+  {
+    path: "/gallery/img-3.webp",
+    width: "828",
+    height: "1472",
+  },
+  {
+    path: "/gallery/img-4.webp",
+    width: "3666",
+    height: "2061",
+  },
+  {
+    path: "/gallery/img-5.webp",
+    width: "750",
+    height: "1334",
+  },
+  {
+    path: "/gallery/img-6.webp",
+    width: "1334",
+    height: "750",
+  },
+  {
+    path: "/gallery/img-7.webp",
+    width: "828",
+    height: "1472",
+  },
+  {
+    path: "/gallery/img-8.webp",
+    width: "1600",
+    height: "1366",
+  },
+];
+
+const GALLERY_THUMBNAILS: any = [
+  {
+    path: "/gallery/thumbnails/img-1-thumb.webp",
+    width: 300,
+    height: 531,
+  },
+  {
+    path: "/gallery/thumbnails/img-2-thumb.webp",
+    width: 414,
+    height: 736,
+  },
+  {
+    path: "/gallery/thumbnails/img-3-thumb.webp",
+    width: 414,
+    height: 736,
+  },
+  {
+    path: "/gallery/thumbnails/img-4-thumb.webp",
+    width: 458,
+    height: 258,
+  },
+  {
+    path: "/gallery/thumbnails/img-5-thumb.webp",
+    width: 375,
+    height: 667,
+  },
+  {
+    path: "/gallery/thumbnails/img-6-thumb.webp",
+    width: 667,
+    height: 375,
+  },
+  {
+    path: "/gallery/thumbnails/img-7-thumb.webp",
+    width: 414,
+    height: 736,
+  },
+  {
+    path: "/gallery/thumbnails/img-8-thumb.webp",
+    width: 800,
+    height: 683,
+  },
+];
+---
+
+<div class="max-w-full relative" id="gallery">
+  {
+    Array.from({ length: 8 }).map((_, i) => {
+      return (
+        <div id="item" class="absolute overflow-hidden">
+          <a
+            href={`${GALLERY_IMAGES[i].path}`}
+            data-pswp-width={`${GALLERY_IMAGES[i].width}`}
+            data-pswp-height={`${GALLERY_IMAGES[i].height}`}
+            target="_blank"
+          >
+            <img
+              class="rounded-xl "
+              src={`${GALLERY_THUMBNAILS[i].path}`}
+              height={`${GALLERY_THUMBNAILS[i].height / 2}`}
+              alt=""
+            />
+          </a>
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  @media screen and (min-width: 640px) {
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #gallery {
+    }
+
+    img {
+      height: 25em;
+    }
+  }
+  #gallery {
+  }
+</style>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import MiniMasonry from "minimasonry";
+
+  const masonry = new MiniMasonry({
+    container: "#gallery",
+  });
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#gallery",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+  });
+  lightbox.init();
+</script>

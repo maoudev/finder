@@ -1,0 +1,18 @@
+---
+import Input from "./Input.astro";
+---
+
+<div class="w-full flex flex-col items-center justify-center h-screen">
+  <h1 id="title" class="text-white mb-6 text-7xl font-semibold">Finder</h1>
+  <Input url="/images" />
+</div>
+
+<style>
+  @font-face {
+    font-family: "medio";
+    src: url("/fonts/medio.woff2");
+  }
+  #title {
+    font-family: "medio";
+  }
+</style>
